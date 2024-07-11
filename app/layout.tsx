@@ -25,6 +25,7 @@ export const metadata: Metadata = {
         url: "https://vicalls.vercel.app/images/ss.png",
         width: 1260,
         height: 800,
+        type: "image/png",
       },
     ],
   },
