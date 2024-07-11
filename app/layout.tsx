@@ -30,13 +30,9 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Vicalls - Meeting App",
     description: "Published by Advie.R",
-    site: "@yourtwitterhandle",
+    site: "@advie_r",
     images: ["https://vicalls.vercel.app/images/ss.png"],
   },
-  // Adding additional meta tags for WhatsApp
-  "og:image": "https://vicalls.vercel.app/images/ss.png",
-  "og:image:width": "1260",
-  "og:image:height": "800",
 };
 
 export default function RootLayout({
