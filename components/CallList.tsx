@@ -87,10 +87,10 @@ const CallList = ({ type }: CallListParams) => {
               key={(call as Call).id || (call as CallRecording).url}
               icon={
                 type === "ended"
-                  ? "/icons/previous.svg"
+                  ? "/icons/previous2.svg"
                   : type === "recordings"
-                  ? "/icons/recordings.svg"
-                  : "/icons/upcoming.svg"
+                  ? "/icons/recordings2.svg"
+                  : "/icons/upcoming2.svg"
               }
               title={
                 (call as Call).state?.custom.description.substring(0, 20) ||
