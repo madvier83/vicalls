@@ -6,9 +6,6 @@ import { Toaster } from "@/components/ui/toaster";
 
 import "@stream-io/video-react-sdk/dist/css/styles.css";
 import "react-datepicker/dist/react-datepicker.css";
-// ideally, Stream Video theme should be imported before your own styles
-// as this would make it easier for you to override certain video-theme rules
-// import "./my-styles.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -36,6 +33,10 @@ export const metadata: Metadata = {
     site: "@yourtwitterhandle",
     images: ["https://vicalls.vercel.app/images/ss.png"],
   },
+  // Adding additional meta tags for WhatsApp
+  "og:image": "https://vicalls.vercel.app/images/ss.png",
+  "og:image:width": "1260",
+  "og:image:height": "800",
 };
 
 export default function RootLayout({
