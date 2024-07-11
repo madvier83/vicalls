@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     siteName: "Vicalls",
     images: [
       {
-        url: "https://vicalls.vercel.app/ss.png",
+        url: "https://vicalls.vercel.app/images/ss.png",
         width: 1260,
         height: 800,
       },
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     title: "Vicalls - Meeting App",
     description: "Published by Advie.R",
     site: "@yourtwitterhandle",
-    images: ["https://vicalls.vercel.app/ss.png"],
+    images: ["https://vicalls.vercel.app/images/ss.png"],
   },
 };
 
