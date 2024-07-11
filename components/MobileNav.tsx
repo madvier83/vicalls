@@ -31,7 +31,7 @@ const MobileNav = () => {
           className="border-none bg-dark-1 text-white"
         >
           <Link href="/" className="flex items-center gap-4">
-            <Image src="/icons/logo.svg" alt="logo" width={32} height={32} />
+            <Image src="/icons/logo2.svg" alt="logo" width={32} height={32} />
             <p className="text-[26px] font-extrabold text-white">Vicalls</p>
           </Link>
 
