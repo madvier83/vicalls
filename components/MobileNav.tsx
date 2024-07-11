@@ -15,21 +15,24 @@ import Link from "next/link";
 const MobileNav = () => {
   const pathname = usePathname();
   return (
-    <section className="w-full max-w-[264px]">
+    <section className="w-full max-w-[264px] text-white">
       <Sheet>
         <SheetTrigger asChild>
           <Image
-            src="/icons/hamburger.svg"
+            src="/icons/hamburger2.svg"
             alt=""
             width={36}
             height={36}
             className="cursor-pointer sm:hidden"
           />
         </SheetTrigger>
-        <SheetContent side={"left"} className="border-none bg-dark-1">
-          <Link href="/" className="flex items-center gap-1">
+        <SheetContent
+          side={"left"}
+          className="border-none bg-dark-1 text-white"
+        >
+          <Link href="/" className="flex items-center gap-4">
             <Image src="/icons/logo.svg" alt="logo" width={32} height={32} />
-            <p className="text-[26px] font-extrabold text-white">Vicall</p>
+            <p className="text-[26px] font-extrabold text-white">Vicalls</p>
           </Link>
 
           <div className="flex flex-col h-[calc(100vh-72px)] justify-between overflow-y-auto">
@@ -43,7 +46,7 @@ const MobileNav = () => {
                       <Link
                         href={link.route}
                         className={cn(
-                          "flex gap-4 items-center p-4 rounded-lg justify-start",
+                          "flex gap-2 items-center p-4 rounded-xl justify-start",
                           {
                             "bg-blue-1": isActive,
                           }
@@ -52,8 +55,8 @@ const MobileNav = () => {
                         <Image
                           src={link.imgUrl}
                           alt={link.label}
-                          width={20}
-                          height={20}
+                          width={24}
+                          height={24}
                         />
                         <p className="font-semibold">{link.label}</p>
                       </Link>

@@ -27,7 +27,7 @@ const MeetingCard = ({
       onClick={() => handleClick()}
     >
       <div className="flex items-center justify-center size-12 bg-white bg-opacity-15 rounded-lg">
-        <Image src={image} alt="" width={28} height={28} />
+        <Image src={image} alt="" width={32} height={32} />
       </div>
       <div className="">
         <h1 className="text-2xl drop-shadow font-bold mb-2">{title}</h1>

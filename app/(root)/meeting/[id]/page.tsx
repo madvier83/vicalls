@@ -13,7 +13,12 @@ const Meeting = ({ params: { id } }: { params: { id: string } }) => {
 
   const { call, isCallLoading } = useGetCallById(id);
 
-  if (!isLoaded || isCallLoading) return <Loader />;
+  if (!isLoaded || isCallLoading)
+    return (
+      <div className="flex h-screen w-screen items-center justify-center">
+        <Loader />
+      </div>
+    );
 
   return (
     <div>

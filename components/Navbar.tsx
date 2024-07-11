@@ -6,11 +6,11 @@ import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
 
 const Navbar = () => {
   return (
-    <nav className="flex justify-between fixed w-full bg-dark-1 px-6 py-4 lg:px-10 z-50">
-      <Link href="/" className="flex items-center gap-1">
-        <Image src="/icons/logo.svg" alt="logo" width={32} height={32} />
+    <nav className="flex justify-between fixed w-full bg-dark-1 px-6 py-6 lg:px-10 z-50">
+      <Link href="/" className="flex items-center gap-2">
+        <Image src="/icons/logo2.svg" alt="logo" width={32} height={32} />
         <p className="text-[26px] font-extrabold text-white max-sm:hidden">
-          Vicall
+          Vicalls
         </p>
       </Link>
 

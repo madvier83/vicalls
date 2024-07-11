@@ -3,8 +3,9 @@ import React from "react";
 
 const Loader = () => {
   return (
-    <div className="flex items-center justify-center h-screen w-screen">
+    <div className="flex items-center justify-center h-full w-full">
       <Image
+        className=""
         src="/icons/loading-circle.svg"
         alt="loading"
         width={52}
