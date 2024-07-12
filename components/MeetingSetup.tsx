@@ -54,7 +54,7 @@ function MeetingSetup({ setIsSetupComplete }: MeetingSetupProps) {
         <Button
           className="rounded-md bg-rose-500 bg-opacity-25 hover:bg-rose-500 hover:bg-opacity-100 px-4 py-3 w-1/2 transition-all duration-500"
           onClick={() => {
-            router.back();
+            router.push("/");
           }}
         >
           Cancel

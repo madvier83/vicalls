@@ -29,7 +29,7 @@ const CallsCard = (props: CallsCardProps) => {
         <div className="flex gap-2 justify-end mt-8">
           <div
             onClick={() => {
-              router.push(window.location.protocol + "//" + props.link);
+              router.push(props.link);
             }}
             className="bg-blue-1 px-4 py-3 rounded-lg cursor-pointer"
           >
@@ -38,7 +38,9 @@ const CallsCard = (props: CallsCardProps) => {
           <div
             className="bg-slate-800 px-4 py-3 rounded-lg cursor-pointer"
             onClick={() => {
-              navigator.clipboard.writeText(props.link);
+              navigator.clipboard.writeText(
+                window.location.protocol + "//" + props.link
+              );
               toast({ title: "Link copied" });
             }}
           >
@@ -50,7 +52,7 @@ const CallsCard = (props: CallsCardProps) => {
       {props.type == "recordings" && (
         <div className="flex gap-2 justify-end mt-8">
           <a
-            href={props.link}
+            href={window.location.protocol + "//" + props.link}
             target="_blank"
             className="bg-blue-1 px-4 py-3 rounded-lg cursor-pointer"
           >
@@ -60,7 +62,9 @@ const CallsCard = (props: CallsCardProps) => {
           <div
             className="bg-slate-800 px-4 py-3 rounded-lg cursor-pointer"
             onClick={() => {
-              navigator.clipboard.writeText(props.link);
+              navigator.clipboard.writeText(
+                window.location.protocol + "//" + props.link
+              );
               toast({ title: "Link copied" });
             }}
           >

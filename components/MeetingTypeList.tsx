@@ -8,12 +8,15 @@ import { Call, useStreamVideoClient } from "@stream-io/video-react-sdk";
 import { useRouter } from "next/navigation";
 import { useToast } from "@/components/ui/use-toast";
 import { Textarea } from "@/components/ui/textarea";
+import { Input } from "@/components/ui/input";
 import ReactDatePicker from "react-datepicker";
 
 const MeetingTypeList = () => {
   const router = useRouter();
   const [meeting, setMeeting] = useState<boolean>(false);
   const [scheduleMeeting, setScheduleMeeting] = useState<boolean>(false);
+  const [joinMeeting, setJoinMeeting] = useState<boolean>(false);
+
   const [values, setValues] = useState({
     dateTime: new Date(),
     description: "",
@@ -27,7 +30,7 @@ const MeetingTypeList = () => {
   const client = useStreamVideoClient();
 
   async function createMeeting() {
-    console.log("run");
+    // console.log("run");
     if (!client || !user) return;
 
     try {
@@ -109,7 +112,7 @@ const MeetingTypeList = () => {
         title="Join Meeting"
         description="Via invitation link"
         handleClick={() => {
-          // router.push("/personal-room");
+          setJoinMeeting(true);
         }}
       />
 
@@ -125,7 +128,33 @@ const MeetingTypeList = () => {
           Start Meeting
         </div>
       </MainDialog>
+      <MainDialog
+        open={joinMeeting}
+        onClose={() => setJoinMeeting(false)}
+        title="Join meeting via invite link"
+      >
+        <label>
+          Invitation Link
+          <Input
+            className="bg-dark-2 focus-visible:ring-0 focus-visible:ring-offset-0 border-none mt-4 mb-4"
+            value={values.link}
+            onChange={(e) =>
+              setValues((prev) => {
+                return { ...prev, link: e.target.value };
+              })
+            }
+          />
+        </label>
 
+        <div
+          className="bg-blue-500 text-white px-6 py-3 text-center text-lg font-semibold rounded-lg cursor-pointer mt-8"
+          onClick={() => {
+            router.push(values.link);
+          }}
+        >
+          Join Meeting
+        </div>
+      </MainDialog>
       {!callDetails ? (
         <MainDialog
           open={scheduleMeeting}

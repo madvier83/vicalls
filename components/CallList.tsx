@@ -93,9 +93,9 @@ const CallList = ({ type }: CallListParams) => {
                   : "/icons/upcoming2.svg"
               }
               title={
-                (call as Call).state?.custom.description.substring(0, 20) ||
-                (call as CallRecording).filename.substring(0, 20) ||
-                "No description"
+                (call as Call).state?.custom?.description?.substring(0, 20) ||
+                (call as CallRecording).filename?.substring(0, 20) ||
+                "Personal Meeting"
               }
               description={
                 (call as Call).state?.startsAt?.toLocaleString() ||
