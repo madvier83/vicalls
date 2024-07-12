@@ -75,7 +75,10 @@ const MeetingTypeList = () => {
     }
   }
 
-  const meetingLink = `${process.env.NEXT_PUBLIC_BASE_URL}/meeting/${callDetails?.id}`;
+  const meetingLink =
+    window.location.protocol +
+    "//" +
+    `${process.env.NEXT_PUBLIC_BASE_URL}/meeting/${callDetails?.id}`;
 
   return (
     <section className="grid grid-cols-1 gap-5 xl:gap-8 sm:grid-cols-2 xl:grid-cols-4">
