@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";
+import GithubCard from "./GithubCard";
 
 const Sidebar = () => {
   const pathname = usePathname();
@@ -38,6 +39,9 @@ const Sidebar = () => {
             </Link>
           );
         })}
+      </div>
+      <div className="hidden lg:block">
+        <GithubCard />
       </div>
     </section>
   );

@@ -11,6 +11,7 @@ import { sidebarLinks } from "@/constants";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
+import GithubCard from "./GithubCard";
 
 const MobileNav = () => {
   const pathname = usePathname();
@@ -65,6 +66,7 @@ const MobileNav = () => {
                 })}
               </section>
             </SheetClose>
+            <GithubCard />
           </div>
         </SheetContent>
       </Sheet>

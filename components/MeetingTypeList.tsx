@@ -81,7 +81,7 @@ const MeetingTypeList = () => {
     `${process.env.NEXT_PUBLIC_BASE_URL}/meeting/${callDetails?.id}`;
 
   return (
-    <section className="grid grid-cols-1 gap-5 xl:gap-8 sm:grid-cols-2 xl:grid-cols-4">
+    <section className="grid grid-cols-1 gap-5 xl:gap-6 sm:grid-cols-2 xl:grid-cols-4">
       <MeetingCard
         color="bg-blue-400"
         image="/icons/add.svg"
