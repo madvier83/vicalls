@@ -41,14 +41,14 @@ const InstallButton = () => {
       // Handle iOS installation here
       // Example: alert("Install instructions for iOS");
     } else {
-      if (deferredPrompt) {
-        deferredPrompt.prompt();
-        const choiceResult = await deferredPrompt.userChoice;
-        console.log(choiceResult.outcome);
-        setDeferredPrompt(null); // Reset after user prompt
-      } else {
-        alert("You have already installed the app!");
-      }
+      // if (deferredPrompt) {
+      deferredPrompt?.prompt();
+      const choiceResult = await deferredPrompt?.userChoice;
+      // console.log(choiceResult.outcome);
+      setDeferredPrompt(null); // Reset after user prompt
+      // } else {
+      //   alert("You have already installed the app!");
+      // }
     }
   };
 
