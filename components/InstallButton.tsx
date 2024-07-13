@@ -14,6 +14,8 @@ const InstallButton = () => {
         window.navigator.standalone
       ) {
         setIsInstalled(true);
+        // Open the PWA if already installed
+        window.location.href = "/";
       }
     };
 
@@ -28,6 +30,8 @@ const InstallButton = () => {
     window.addEventListener("appinstalled", () => {
       setIsInstalled(true);
       setDeferredPrompt(null);
+      // Open the PWA after installation
+      window.location.href = "/";
     });
 
     if ("serviceWorker" in navigator) {
