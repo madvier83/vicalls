@@ -33,10 +33,9 @@ const InstallButton = () => {
 
     handleInstallPrompt();
   }, []);
-
   return (
     <div
-      onClick={handleInstallPrompt}
+      // onClick={handleInstallPrompt}
       id="installButton"
       style={{ display: "none" }}
       className="bg-blue-1 px-3 py-2 text-center w-full text-sm text-white rounded-xl line-clamp-1 font-semibold cursor-pointer"
