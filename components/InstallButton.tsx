@@ -2,35 +2,35 @@
 import { useState, useEffect } from "react";
 
 const InstallButton = () => {
-  function handleInstallPrompt() {
-    console.log("install prompt");
-    let deferredPrompt;
-
-    window.addEventListener("beforeinstallprompt", (e) => {
-      e.preventDefault();
-      deferredPrompt = e;
-
-      // Show your install button or prompt
-      installButton.style.display = "block";
-    });
-
-    installButton.addEventListener("click", () => {
-      if (deferredPrompt) {
-        deferredPrompt.prompt();
-
-        deferredPrompt.userChoice.then((choiceResult) => {
-          if (choiceResult.outcome === "accepted") {
-            console.log("User accepted the install prompt");
-          } else {
-            console.log("User dismissed the install prompt");
-          }
-          deferredPrompt = null;
-        });
-      }
-    });
-  }
-
   useEffect(() => {
+    const handleInstallPrompt = () => {
+      let deferredPrompt;
+
+      window.addEventListener("beforeinstallprompt", (e) => {
+        e.preventDefault();
+        deferredPrompt = e;
+
+        // Show install button or prompt
+        document.getElementById("installButton").style.display = "block";
+      });
+
+      // Install button click handler
+      document.getElementById("installButton").addEventListener("click", () => {
+        if (deferredPrompt) {
+          deferredPrompt.prompt();
+
+          deferredPrompt.userChoice.then((choiceResult) => {
+            if (choiceResult.outcome === "accepted") {
+              console.log("User accepted the install prompt");
+            } else {
+              console.log("User dismissed the install prompt");
+            }
+            deferredPrompt = null;
+          });
+        }
+      });
+    };
+
     handleInstallPrompt();
   }, []);
 
