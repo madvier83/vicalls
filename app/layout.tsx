@@ -43,19 +43,19 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <Head>
+      <head>
         <link rel="manifest" href="/manifest.json" />
         <link rel="icon" href="/favicon.ico" />
         <meta name="theme-color" content="#000000" />
-      </Head>
-      <ClerkProvider>
-        <body className={`${inter.className} bg-dark-2`}>
+      </head>
+      <body className={`${inter.className} bg-dark-2`}>
+        <ClerkProvider>
           <main>
             {children}
             <Toaster />
           </main>
-        </body>
-      </ClerkProvider>
+        </ClerkProvider>
+      </body>
     </html>
   );
 }
