@@ -6,6 +6,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";
 import GithubCard from "./GithubCard";
+import InstallButton from "./InstallButton";
 
 const Sidebar = () => {
   const pathname = usePathname();
@@ -40,7 +41,10 @@ const Sidebar = () => {
           );
         })}
       </div>
-      <div className="hidden lg:block">
+      <div className="hidden lg:block w-full">
+        <div className="w-full mb-4">
+          <InstallButton />
+        </div>
         <GithubCard />
       </div>
     </section>

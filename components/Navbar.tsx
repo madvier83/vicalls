@@ -16,9 +16,9 @@ const Navbar = () => {
       </Link>
 
       <div className="flex gap-5">
-        <div className="hidden sm:block">
+        {/* <div className="hidden sm:block">
           <InstallButton />
-        </div>
+        </div> */}
         <SignedIn>
           <UserButton />
         </SignedIn>
