@@ -1,6 +1,6 @@
 {
-  "theme_color": "#8936FF",
-  "background_color": "#2EC6FE",
+  "theme_color": "#1C1F2E",
+  "background_color": "#161925",
   "start_url": "/",
   "icons": [
     {
@@ -25,20 +25,20 @@
   "description": "Vicalls - Meeting App",
   "screenshots": [
     {
-      "src": "/images/ss.png",
-      "sizes": "640x480",
+      "src": "/images/ss2.png",
+      "sizes": "1919x991",
       "type": "image/png",
       "form_factor": "wide"
     },
     {
-      "src": "/images/ss.png",
-      "sizes": "640x480",
+      "src": "/images/ss2.png",
+      "sizes": "1919x991",
       "type": "image/png",
       "form_factor": "narrow"
     },
     {
-      "src": "/images/ss.png",
-      "sizes": "640x480",
+      "src": "/images/ss2.png",
+      "sizes": "1919x991",
       "type": "image/png"
     }
   ]
