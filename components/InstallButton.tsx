@@ -1,24 +1,35 @@
 // @ts-nocheck
-"use client";
 import { useState, useEffect } from "react";
 
 const InstallButton = () => {
   const [deferredPrompt, setDeferredPrompt] = useState(null);
+
   useEffect(() => {
-    window.addEventListener("beforeinstallprompt", (e) => {
+    const handleBeforeInstallPrompt = (e) => {
       e.preventDefault();
-      setDeferredPrompt(e); // can be in global state
-    });
+      setDeferredPrompt(e);
+    };
+
+    window.addEventListener("beforeinstallprompt", handleBeforeInstallPrompt);
+
+    return () => {
+      window.removeEventListener(
+        "beforeinstallprompt",
+        handleBeforeInstallPrompt
+      );
+    };
+  }, []);
+
+  useEffect(() => {
     if ("serviceWorker" in navigator) {
       navigator.serviceWorker
         .register("/sw.js")
-        .then((reg) => console.log("sw worker registered", reg))
-        .catch(() => console.log("failed"));
+        .then((reg) => console.log("Service worker registered", reg))
+        .catch((err) =>
+          console.error("Failed to register service worker", err)
+        );
     }
-    return () => {
-      window.removeEventListener("beforeinstallprompt", null);
-    };
-  });
+  }, []);
 
   const isIos = () => {
     const userAgent = window.navigator.userAgent.toLowerCase();
@@ -27,16 +38,16 @@ const InstallButton = () => {
 
   const promptAppInstall = async () => {
     if (isIos()) {
-      // write pop-up message for IOS here.
-    }
-    if (!isIos()) {
+      // Handle iOS installation here
+      // Example: alert("Install instructions for iOS");
+    } else {
       if (deferredPrompt) {
         deferredPrompt.prompt();
-        await deferredPrompt.userChoice;
-        setDeferredPrompt(null);
+        const choiceResult = await deferredPrompt.userChoice;
+        console.log(choiceResult.outcome);
+        setDeferredPrompt(null); // Reset after user prompt
       } else {
-        // Do something when app is already installed
-        alert("You have already installed app!");
+        alert("You have already installed the app!");
       }
     }
   };
