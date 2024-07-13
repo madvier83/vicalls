@@ -73,5 +73,3 @@ const InstallButton = () => {
     </div>
   );
 };
-
-export default InstallButton;
