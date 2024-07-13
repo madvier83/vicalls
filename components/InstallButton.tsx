@@ -67,7 +67,7 @@ const InstallButton = () => {
   return (
     <div
       onClick={promptAppInstall}
-      className="bg-blue-1 px-3 py-2 text-center w-full text-sm text-white rounded-xl line-clamp-1 font-semibold"
+      className="bg-blue-1 px-3 py-2 text-center w-full text-sm text-white rounded-xl line-clamp-1 font-semibold cursor-pointer"
     >
       Install App
     </div>
