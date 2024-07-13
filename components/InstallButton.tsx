@@ -60,14 +60,25 @@ const InstallButton = () => {
     }
   };
 
+  const openApp = () => {
+    window.location.href = window.location.origin; // Or any other URL for your app
+  };
+
   if (isInstalled) {
-    return null;
+    return (
+      <div
+        onClick={openApp}
+        className="bg-green-500 px-3 py-2 text-center w-full text-sm text-white rounded-xl line-clamp-1 font-semibold"
+      >
+        Open App
+      </div>
+    );
   }
 
   return (
     <div
       onClick={promptAppInstall}
-      className="bg-blue-1 px-3 py-2 text-center w-full text-sm text-white rounded-xl line-clamp-1 font-semibold cursor-pointer"
+      className="bg-blue-500 px-3 py-2 text-center w-full text-sm text-white rounded-xl line-clamp-1 font-semibold"
     >
       Install App
     </div>
