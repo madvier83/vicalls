@@ -4,44 +4,21 @@ import { useState, useEffect } from "react";
 
 const InstallButton = () => {
   const [deferredPrompt, setDeferredPrompt] = useState(null);
-  const [isInstalled, setIsInstalled] = useState(false);
-
   useEffect(() => {
-    const checkInstallation = () => {
-      // Check if app is installed
-      if (
-        window.matchMedia("(display-mode: standalone)").matches ||
-        window.navigator.standalone
-      ) {
-        setIsInstalled(true);
-      }
-    };
-
-    checkInstallation();
-
     window.addEventListener("beforeinstallprompt", (e) => {
       e.preventDefault();
-      setDeferredPrompt(e);
-      setIsInstalled(false);
+      setDeferredPrompt(e); // can be in global state
     });
-
-    window.addEventListener("appinstalled", () => {
-      setIsInstalled(true);
-      setDeferredPrompt(null);
-    });
-
     if ("serviceWorker" in navigator) {
       navigator.serviceWorker
         .register("/sw.js")
-        .then((reg) => console.log("Service worker registered", reg))
-        .catch(() => console.log("Service worker registration failed"));
+        .then((reg) => console.log("sw worker registered", reg))
+        .catch(() => console.log("failed"));
     }
-
     return () => {
       window.removeEventListener("beforeinstallprompt", null);
-      window.removeEventListener("appinstalled", null);
     };
-  }, []);
+  });
 
   const isIos = () => {
     const userAgent = window.navigator.userAgent.toLowerCase();
@@ -50,19 +27,19 @@ const InstallButton = () => {
 
   const promptAppInstall = async () => {
     if (isIos()) {
-      // Write pop-up message for iOS here.
-    } else {
+      // write pop-up message for IOS here.
+    }
+    if (!isIos()) {
       if (deferredPrompt) {
         deferredPrompt.prompt();
         await deferredPrompt.userChoice;
         setDeferredPrompt(null);
+      } else {
+        // Do something when app is already installed
+        alert("You have already installed app!");
       }
     }
   };
-
-  if (isInstalled) {
-    return null;
-  }
 
   return (
     <div
