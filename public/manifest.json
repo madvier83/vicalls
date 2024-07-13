@@ -1,6 +1,7 @@
 {
   "theme_color": "#8936FF",
   "background_color": "#2EC6FE",
+  "start_url": "/",
   "icons": [
     {
       "purpose": "maskable",
@@ -21,5 +22,24 @@
   "lang": "en-US",
   "name": "Vicalls - Meeting App",
   "short_name": "Vicalls",
-  "description": "Vicalls - Meeting App"
+  "description": "Vicalls - Meeting App",
+  "screenshots": [
+    {
+      "src": "/images/ss.png",
+      "sizes": "640x480",
+      "type": "image/png",
+      "form_factor": "wide"
+    },
+    {
+      "src": "/images/ss.png",
+      "sizes": "640x480",
+      "type": "image/png",
+      "form_factor": "narrow"
+    },
+    {
+      "src": "/images/ss.png",
+      "sizes": "640x480",
+      "type": "image/png"
+    }
+  ]
 }
