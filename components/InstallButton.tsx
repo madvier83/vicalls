@@ -4,21 +4,34 @@ import { useState, useEffect } from "react";
 
 const InstallButton = () => {
   const [deferredPrompt, setDeferredPrompt] = useState(null);
+  const [isInstalled, setIsInstalled] = useState(false);
+
   useEffect(() => {
-    window.addEventListener("beforeinstallprompt", (e) => {
+    const beforeInstallHandler = (e) => {
       e.preventDefault();
-      setDeferredPrompt(e); // can be in global state
-    });
+      setDeferredPrompt(e);
+    };
+
+    const appInstalledHandler = () => {
+      setIsInstalled(true);
+    };
+
+    window.addEventListener("beforeinstallprompt", beforeInstallHandler);
+    window.addEventListener("appinstalled", appInstalledHandler);
+
     if ("serviceWorker" in navigator) {
       navigator.serviceWorker
         .register("/sw.js")
-        .then((reg) => console.log("sw worker registered", reg))
-        .catch(() => console.log("failed"));
+        .then((reg) => console.log("SW registered: ", reg))
+        .catch((err) => console.log("SW registration failed: ", err));
     }
+
+    // Clean up event listeners on component unmount
     return () => {
-      window.removeEventListener("beforeinstallprompt", null);
+      window.removeEventListener("beforeinstallprompt", beforeInstallHandler);
+      window.removeEventListener("appinstalled", appInstalledHandler);
     };
-  });
+  }, []);
 
   const isIos = () => {
     const userAgent = window.navigator.userAgent.toLowerCase();
@@ -27,29 +40,30 @@ const InstallButton = () => {
 
   const promptAppInstall = async () => {
     if (isIos()) {
-      // write pop-up message for IOS here.
-    }
-    if (!isIos()) {
-      if (deferredPrompt) {
-        deferredPrompt.prompt();
-        await deferredPrompt.userChoice;
+      // Write pop-up message for iOS here.
+    } else if (deferredPrompt) {
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      if (outcome === "accepted") {
         setDeferredPrompt(null);
-      } else {
-        // Do something when app is already installed
-        alert("You have already installed app!");
       }
+    } else {
+      // Do something when the app is already installed
+      alert("You have already installed the app!");
     }
   };
 
+  if (isInstalled) {
+    return null; // Do not render the button if the app is already installed
+  }
+
   return (
-    // isVisible && (
     <button
       onClick={promptAppInstall}
-      className="bg-blue-1 px-3 py-2  w-full sm:w-40 text-sm text-white rounded-xl line-clamp-1 font-semibold"
+      className="bg-blue-500 px-3 py-2 w-full sm:w-40 text-sm text-white rounded-xl line-clamp-1 font-semibold"
     >
       Install App
     </button>
-    // )
   );
 };
 
