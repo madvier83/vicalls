@@ -12,6 +12,7 @@ import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import GithubCard from "./GithubCard";
+import InstallButton from "./InstallButton";
 
 const MobileNav = () => {
   const pathname = usePathname();
@@ -66,7 +67,12 @@ const MobileNav = () => {
                 })}
               </section>
             </SheetClose>
+
+            <div className="block lg:hidden w-full pb-4">
+              <InstallButton />
+            </div>
             <GithubCard />
+            <div className="pb-16"></div>
           </div>
         </SheetContent>
       </Sheet>

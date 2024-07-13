@@ -3,6 +3,7 @@ import Link from "next/link";
 import React from "react";
 import MobileNav from "./MobileNav";
 import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
+import InstallButton from "./InstallButton";
 
 const Navbar = () => {
   return (
@@ -15,6 +16,9 @@ const Navbar = () => {
       </Link>
 
       <div className="flex gap-5">
+        <div className="hidden sm:block">
+          <InstallButton />
+        </div>
         <SignedIn>
           <UserButton />
         </SignedIn>
