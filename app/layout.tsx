@@ -6,6 +6,7 @@ import { Toaster } from "@/components/ui/toaster";
 
 import "@stream-io/video-react-sdk/dist/css/styles.css";
 import "react-datepicker/dist/react-datepicker.css";
+import Head from "next/head";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,7 +20,7 @@ export const metadata: Metadata = {
     siteName: "Vicalls",
     images: [
       {
-        url: "https://vicalls.vercel.app/images/ss.png",
+        url: "https://vicalls.vercel.app/images/icon512_rounded.png",
         width: 1260,
         height: 800,
         type: "image/png",
@@ -42,6 +43,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <Head>
+        <link rel="manifest" href="/manifest.json" />
+        <link rel="icon" href="/favicon.ico" />
+        <meta name="theme-color" content="#000000" />
+      </Head>
       <ClerkProvider>
         <body className={`${inter.className} bg-dark-2`}>
           <main>
