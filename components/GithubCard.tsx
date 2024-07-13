@@ -25,24 +25,24 @@ export default function GithubCard() {
   }, [username, repo]);
 
   return (
-    <a href={repoData?.html_url} target="_blank" rel="noopener noreferrer">
-      <div className="items-center bg-dark-2 rounded-xl">
-        {repoData ? (
-          <div className="max-w-sm rounded overflow-hidden shadow-lg px-4 py-3 text-xs text-slate-300">
-            <div className="flex text-lg mb-2 items-end gap-2 border-b border-dashed pb-1 border-slate-700">
-              {/* <Github size={40} /> */}
-              <div className="p-0 text-slate-200 font-semibold">Vicalls</div>
-              <div className="text-xs text-slate-500 mb-1">Meeting App</div>
-            </div>
+    // <a href={repoData?.html_url} target="_blank" rel="noopener noreferrer">
+    <div className="items-center bg-dark-2 rounded-xl">
+      {repoData ? (
+        <div className="max-w-sm rounded overflow-hidden shadow-lg px-4 py-3 text-xs text-slate-300">
+          <div className="flex text-lg mb-2 items-end gap-2 border-b border-dashed pb-1 border-slate-700">
+            {/* <Github size={40} /> */}
+            <div className="p-0 text-slate-200 font-semibold">Vicalls</div>
+            <div className="text-xs text-slate-500 mb-1">Meeting App</div>
+          </div>
 
-            <div className="flex justify-between">
-              <a href="https://advierifaldy.vercel.app" target="_blank">
-                <p className="text-slate-500 flex gap-1">
-                  <strong>By:</strong>
-                  <div>Advie.R</div>
-                </p>
-              </a>
-              {/* <p className="text-xs text-slate-400 flex gap-1 items-center justify-center">
+          <div className="flex justify-between">
+            <a href="https://advierifaldy.vercel.app" target="_blank">
+              <p className="text-slate-500 flex gap-1">
+                <strong>By:</strong>
+                <span>Advie.R</span>
+              </p>
+            </a>
+            {/* <p className="text-xs text-slate-400 flex gap-1 items-center justify-center">
                 <Image
                   className="opacity-50"
                   src="/icons/star.svg"
@@ -52,18 +52,18 @@ export default function GithubCard() {
                 />
                 <p>{repoData.stargazers_count}</p>
               </p> */}
-            </div>
-            {/* <p className="text-slate-500">
+          </div>
+          {/* <p className="text-slate-500">
               <strong>Stars:</strong> {repoData.stargazers_count}
             </p> */}
-            <p className="text-blue-500 truncate">
-              https://github.com/madvier83/vicalls
-            </p>
-          </div>
-        ) : (
-          <p className="text-xs p-2">Loading...</p>
-        )}
-      </div>
-    </a>
+          <p className="text-blue-500 truncate">
+            https://github.com/madvier83/vicalls
+          </p>
+        </div>
+      ) : (
+        <p className="text-xs p-2">Loading...</p>
+      )}
+    </div>
+    // </a>
   );
 }
