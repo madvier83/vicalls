@@ -4,40 +4,47 @@ import { useState, useEffect } from "react";
 
 const InstallButton = () => {
   const [deferredPrompt, setDeferredPrompt] = useState(null);
-  const [isVisible, setIsVisible] = useState(false);
-
   useEffect(() => {
-    const handler = (e) => {
+    window.addEventListener("beforeinstallprompt", (e) => {
       e.preventDefault();
-      setDeferredPrompt(e);
-      setIsVisible(true);
-    };
-
-    window.addEventListener("beforeinstallprompt", handler);
-
+      setDeferredPrompt(e); // can be in global state
+    });
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker
+        .register("/sw.js")
+        .then((reg) => console.log("sw worker registered", reg))
+        .catch(() => console.log("failed"));
+    }
     return () => {
-      window.removeEventListener("beforeinstallprompt", handler);
+      window.removeEventListener("beforeinstallprompt", null);
     };
-  }, []);
+  });
 
-  const handleInstallClick = async () => {
-    if (deferredPrompt) {
-      deferredPrompt.prompt();
-      const { outcome } = await deferredPrompt.userChoice;
-      if (outcome === "accepted") {
-        console.log("User accepted the install prompt");
+  const isIos = () => {
+    const userAgent = window.navigator.userAgent.toLowerCase();
+    return /iphone|ipad|ipod/.test(userAgent);
+  };
+
+  const promptAppInstall = async () => {
+    if (isIos()) {
+      // write pop-up message for IOS here.
+    }
+    if (!isIos()) {
+      if (deferredPrompt) {
+        deferredPrompt.prompt();
+        await deferredPrompt.userChoice;
+        setDeferredPrompt(null);
       } else {
-        console.log("User dismissed the install prompt");
+        // Do something when app is already installed
+        alert("You have already installed app!");
       }
-      setDeferredPrompt(null);
-      setIsVisible(false);
     }
   };
 
   return (
     // isVisible && (
     <button
-      onClick={handleInstallClick}
+      onClick={promptAppInstall}
       className="bg-blue-1 px-3 py-2  w-full sm:w-40 text-sm text-white rounded-xl line-clamp-1 font-semibold"
     >
       Install App
