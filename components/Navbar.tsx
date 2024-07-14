@@ -7,8 +7,8 @@ import InstallButton from "./InstallButton";
 
 const Navbar = () => {
   return (
-    <nav className="flex justify-between fixed w-full bg-dark-1 px-6 py-6 lg:px-10 z-50">
-      <Link href="/" className="flex items-center gap-2">
+    <nav className="flex justify-between fixed w-full bg-dark-1 px-6 py-6 lg:px-10 lg:pl-8 z-50">
+      <Link href="/" className="flex items-center gap-4">
         <Image src="/icons/logo2.svg" alt="logo" width={32} height={32} />
         <p className="text-[26px] font-extrabold text-white max-sm:hidden">
           Vicalls

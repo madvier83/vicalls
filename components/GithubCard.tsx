@@ -37,7 +37,7 @@ export default function GithubCard() {
 
           <div className="flex justify-between">
             <a href="https://advierifaldy.vercel.app" target="_blank">
-              <p className="text-slate-500 flex gap-1">
+              <p className="text-slate-500 hover:text-blue-500 flex gap-1">
                 <strong>By:</strong>
                 <span>Advie.R</span>
               </p>
@@ -56,9 +56,13 @@ export default function GithubCard() {
           {/* <p className="text-slate-500">
               <strong>Stars:</strong> {repoData.stargazers_count}
             </p> */}
-          <p className="text-blue-500 truncate">
-            https://github.com/madvier83/vicalls
-          </p>
+          <a
+            href="https://github.com/madvier83/vicalls"
+            target="_blank"
+            className="text-slate-500 hover:text-blue-500 truncate"
+          >
+            github.com/madvier83/vicalls
+          </a>
         </div>
       ) : (
         <p className="text-xs p-2">Loading...</p>
